@@ -51,7 +51,7 @@ function getForecast(lat,lon, type){
       console.log(data);
       for (i=7;i<40; i+=8){
         console.log(data.list[i])
-      document.getElementById(`five-icon-${i}`).src= `http://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`
+      document.getElementById(`five-icon-${i}`).src= `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`
       // document.getElementById(`day${i}`).innerText= data.list[i].dt_text
       document.getElementById(`five-temp-${i}`).innerText= "Temp: " +Math.floor(data.list[i].main.temp) +'°C'
       document.getElementById(`five-wind-${i}`).innerText= "Wind Speed: "+ data.list[i].wind.speed + 'm/s'
@@ -63,7 +63,7 @@ function getForecast(lat,lon, type){
 let formSubmitHandler = function (event){
    let cityName = $('#city').val() || event.target.innerText.toLowerCase()
    console.log(cityName)
-   let coordApi = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=87b635d8d76e97c5eaab6ef42831deea`
+   let coordApi = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=87b635d8d76e97c5eaab6ef42831deea`
   //  saveCity(cityName) 
    event.preventDefault();
    fetch(coordApi)
