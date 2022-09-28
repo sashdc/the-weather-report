@@ -42,7 +42,7 @@ body{
     display: flex;
     justify-content: space-around;
     /* padding-top: 20px; */
-    margin:0px 150px;
+    margin:0px 50px;
     opacity: 70%;
     font-size: small;
 }
@@ -58,6 +58,9 @@ body{
 
 li{
     list-style-type: none;
-    
+    }
+
+.card{
+    margin: 0px 2px;
 }
 

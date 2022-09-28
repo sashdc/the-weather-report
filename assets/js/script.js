@@ -3,7 +3,9 @@ let currentDate = new Date();
 let cityList= []
 let searchHistoryEl = document.querySelector('.search-history')
 var date = new Date();
-var curDate = date.getDate() + "/" +  +(date.getMonth()+1)+"/"+ date.getFullYear()
+const month = date.toLocaleString('default', { month: 'short' });
+console.log(month);
+var curDate = date.getDate() + "/" +  month +"/"+ date.getFullYear()
 
 console.log(JSON.parse(localStorage.getItem("Saved-Cities")))
 
