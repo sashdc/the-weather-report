@@ -1,6 +1,9 @@
 let cityNameEl = document.getElementById('cityinput')
 let currentDate = new Date();
 let cityList= []
+let searchHistoryEl = document.querySelector('.search-history')
+var date = new Date();
+var curDate = date.getDate() + "/" +  +(date.getMonth()+1)+"/"+ date.getFullYear()
 
 console.log(JSON.parse(localStorage.getItem("Saved-Cities")))
 
@@ -9,8 +12,8 @@ if (JSON.parse(localStorage.getItem("Saved-Cities")) !== null)
   {cityList =  JSON.parse(localStorage.getItem("Saved-Cities"))
   for (i=0; i<cityList.length; i++){
   let cityBtn = document.createElement('button')
-  cityBtn.innerText=cityList[i]
-  cityBtn.classList.add('btn', 'btn-success', 'btn,-blockn')
+  cityBtn.innerText=cityList[i].toUpperCase()
+  cityBtn.classList.add('btn', 'btn-success', 'btn,-blockn', 'm-3')
   let searchHistory = document.querySelector(".search-history")
   searchHistory.appendChild(cityBtn)
 }}
@@ -47,7 +50,7 @@ function getForecast(lat,lon, type){
       for (i=7;i<40; i+=8){
         console.log(data.list[i])
       document.getElementById(`five-icon-${i}`).src= `http://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`
-      // document.getElementById ("day1").innerText= data.list[7].dt_text
+      // document.getElementById(`day${i}`).innerText= data.list[i].dt_text
       document.getElementById(`five-temp-${i}`).innerText= "Temp: " +Math.floor(data.list[i].main.temp) +'°C'
       document.getElementById(`five-wind-${i}`).innerText= "Wind Speed: "+ data.list[i].wind.speed + 'm/s'
       document.getElementById(`five-hum-${i}`).innerText= "Humidity: " +data.list[i].main.humidity + "%"
@@ -56,13 +59,14 @@ function getForecast(lat,lon, type){
 
 // get the lat and lon for the city on entering the city name and clicking search button
 let formSubmitHandler = function (event){
-   let cityName = $('#city').val()
+   let cityName = $('#city').val() || event.target.innerText.toLowerCase()
    console.log(cityName)
    let coordApi = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=87b635d8d76e97c5eaab6ef42831deea`
   //  saveCity(cityName) 
    event.preventDefault();
    fetch(coordApi)
       .then(function (response) {
+        // does this not prvent unanswered calls being logged?
         if (response.ok){
           saveCity(cityName) }
       return response.json();
@@ -78,23 +82,24 @@ let formSubmitHandler = function (event){
       console.log(lat)
       console.log(lon)
       getWeather(lat, lon);
-      document.getElementById('chosencity').innerText=cityName.toUpperCase() +"," + data[0].country
+      document.getElementById('chosencity').innerText=cityName.toUpperCase() +"," + data[0].country + " " + curDate
       getForecast(lat, lon);
     });
 }
 
 // save previous searches as buttons, but only if the item isn't already in there
 function saveCity(city){
-    if (cityList.indexOf(city)){
+    if (!cityList.includes(city)){
     cityList.push(city)
     console.log(cityList)
     localStorage.setItem("Saved-Cities", JSON.stringify(cityList))
     let cityBtn = document.createElement('button')
-    cityBtn.innerText=city
-    cityBtn.classList.add('btn', 'btn-success', 'btn,-blockn')
+    cityBtn.innerText=city.toUpperCase()
+    cityBtn.classList.add('btn', 'btn-success', 'btn,-blockn', 'm-3')
     let searchHistory = document.querySelector(".search-history")
     searchHistory.appendChild(cityBtn)}
 }
 
 // give button clickability and function
 cityNameEl.addEventListener('submit', formSubmitHandler);
+searchHistoryEl.addEventListener('click', formSubmitHandler)
