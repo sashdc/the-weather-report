@@ -7,6 +7,7 @@ const month = date.toLocaleString('default', { month: 'short' });
 console.log(month);
 var curDate = date.getDate() + "/" +  month +"/"+ date.getFullYear()
 
+
 console.log(JSON.parse(localStorage.getItem("Saved-Cities")))
 
 // loads previously saved cities as buttons if there are cities there
@@ -52,7 +53,7 @@ function getForecast(lat,lon, type){
       for (i=7;i<40; i+=8){
         console.log(data.list[i])
       document.getElementById(`five-icon-${i}`).src= `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`
-      // document.getElementById(`day${i}`).innerText= data.list[i].dt_text
+      document.getElementById(`${i}`).innerText= date.getDate()++ + "/" +  month +"/"+ date.getFullYear()
       document.getElementById(`five-temp-${i}`).innerText= "Temp: " +Math.floor(data.list[i].main.temp) +'°C'
       document.getElementById(`five-wind-${i}`).innerText= "Wind Speed: "+ data.list[i].wind.speed + 'm/s'
       document.getElementById(`five-hum-${i}`).innerText= "Humidity: " +data.list[i].main.humidity + "%"
@@ -64,22 +65,23 @@ let formSubmitHandler = function (event){
    let cityName = $('#city').val() || event.target.innerText.toLowerCase()
    console.log(cityName)
    let coordApi = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=87b635d8d76e97c5eaab6ef42831deea`
-  //  saveCity(cityName) 
    event.preventDefault();
    fetch(coordApi)
       .then(function (response) {
-        // does this not prvent unanswered calls being logged?
-        if (response.ok){
-          saveCity(cityName) }
+
       return response.json();
     })
     .then(function (data) {
       console.log(data);
-      if (data.length === 0){
+      // if (data.length === 0){
+        if (!data[0]){
+          alert("location not found")
         console.log("No results.")
-        return;
-      }
-      let lat = data[0].lat;
+        } else {
+             saveCity(cityName) 
+
+        // return;
+        let lat = data[0].lat;
       let lon = data[0].lon;
       console.log(lat)
       console.log(lon)
@@ -87,6 +89,8 @@ let formSubmitHandler = function (event){
       document.getElementById('chosencity').innerText=cityName.toUpperCase() +"," + data[0].country 
       document.getElementById('currentdate').innerText = curDate
       getForecast(lat, lon);
+      }
+      
     });
 }
 
