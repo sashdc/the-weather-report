@@ -70,13 +70,14 @@ li {
     display: flex;
     flex-direction: row;
     width: 98%;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 
 @media (max-width: 1000px) {
     .weather {
         flex-direction: column;
+        margin-top: 20px;
     }
 
     .current-weather {

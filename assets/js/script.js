@@ -53,7 +53,7 @@ function getForecast(lat,lon, type){
       for (i=7;i<40; i+=8){
         console.log(data.list[i])
       document.getElementById(`five-icon-${i}`).src= `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`
-      document.getElementById(`${i}`).innerText= date.getDate()++ + "/" +  month +"/"+ date.getFullYear()
+      // document.getElementById(`${i}`).innerText= date.getDate()++ + "/" +  month +"/"+ date.getFullYear()
       document.getElementById(`five-temp-${i}`).innerText= "Temp: " +Math.floor(data.list[i].main.temp) +'°C'
       document.getElementById(`five-wind-${i}`).innerText= "Wind Speed: "+ data.list[i].wind.speed + 'm/s'
       document.getElementById(`five-hum-${i}`).innerText= "Humidity: " +data.list[i].main.humidity + "%"
