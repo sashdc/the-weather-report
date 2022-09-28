@@ -1,9 +1,9 @@
-*{
+* {
     font-family: 'Quicksand', sans-serif;
-    
+
 }
 
-header{
+header {
     text-align: center;
     background: cornflowerblue;
     /* background: radial-gradient(circle, rgba(109,107,157,1) 1%, rgba(23,23,138,1) 100%, rgba(0,212,255,1) 100%);     */
@@ -11,13 +11,13 @@ header{
     color: cornsilk;
     font-size: 400%;
     border-bottom: 6px solid rgb(148, 182, 245);
-    font-family:Arial, Helvetica, sans-serif;
-    border-bottom-right-radius: 90px ;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom-right-radius: 90px;
     border-bottom-left-radius: 90px;
     margin-bottom: 1%;
 }
 
-body{
+body {
     display: flex;
     background: rgb(208, 213, 221);
     flex-direction: column;
@@ -26,41 +26,72 @@ body{
     justify-content: center;
 }
 
-.search-area{
+.search-area {
     /* width : 70%; */
     justify-items: center;
     margin: 0 auto;
     padding-top: 0px;
     display: flex;
     flex-direction: column;
-    height:2cm;
+    height: 2cm;
     align-items: center;
     margin-bottom: 50px;
 }
+.search-history{
+ margin: 0 auto;
+}
 
-.five-day{
+.five-day {
     display: flex;
     justify-content: space-around;
     /* padding-top: 20px; */
-    margin:0px 50px;
+    /* margin:0px 50px; */
     opacity: 70%;
     font-size: small;
 }
 
-.current-weather{
-    margin:40px 40px;
+.current-weather {
+    margin: 30px;
     opacity: 80%;
-    font-size: x-large;
-    ;
-    /* flex-direction: row; */
-
+    width: 40%
 }
 
-li{
+li {
     list-style-type: none;
-    }
+}
 
-.card{
+.card {
     margin: 0px 2px;
 }
 
+.weather {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+
+@media (max-width: 1000px) {
+    .weather {
+        flex-direction: column;
+    }
+
+    .current-weather {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+
+
+    .five-day {
+        flex-wrap: wrap;       
+        /* flex: auto; */
+        margin: 0 auto;
+    }
+
+.perday{
+    display: flex;
+    flex-direction: row;
+}
+
+}

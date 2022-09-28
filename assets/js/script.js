@@ -84,7 +84,8 @@ let formSubmitHandler = function (event){
       console.log(lat)
       console.log(lon)
       getWeather(lat, lon);
-      document.getElementById('chosencity').innerText=cityName.toUpperCase() +"," + data[0].country + " " + curDate
+      document.getElementById('chosencity').innerText=cityName.toUpperCase() +"," + data[0].country 
+      document.getElementById('currentdate').innerText = curDate
       getForecast(lat, lon);
     });
 }

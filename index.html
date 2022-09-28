@@ -35,95 +35,70 @@
     </div>
   </div>
 
+  <div class = 'weather'>
   <div class='current-weather'>
     <div class="card shadow p-3 mb-5 bg-info rounded"  >
-      <h2 class="display-1" id="chosencity"></h2>
+      <h2 class="display-1" id="chosencity">CITY</h2>
+      <h3 class="display-3" id="currentdate">Date</h3>
       <div class="cur-weather-block">
       <ul id="cur-weather">
         <img id="icon" class="bg-secondary" src="" height="100px"></img>
-        <li class="display-6" id="cur-temp"></li>
-        <li class="display-6" id="cur-wind"></li>
-        <li class="display-6" id="cur-humidity"></li>
+        <li class="display-6" id="cur-temp">Current Temperature</li>
+        <li class="display-6" id="cur-wind">Current Wind Speed</li>
+        <li class="display-6" id="cur-humidity">Current Humidity</li>
       </ul>
     </div>
     </div>
   </div>
 
   <div class="five-day">
-    <div class="card shadow p-3 mb-5 bg-white rounded" >
+    <div class="card shadow p-3 mb-5 bg-white rounded perday" >
+      <h5 class="card-title" id="7">Day 1</h5>
       <img class="card-img-top" src="./assets/images/02d@2x.png" alt="weather icon" id="five-icon-7" height="140px" width="90px">
-      <div class="card-body">
-        <h5 class="card-title" id="7">Day 1</h5>
-      </div>
-      <ul class="list-group list-group-flush">
+          <ul class="list-group list-group-flush">
         <li class="list-group-item" id ="five-temp-7">temp</li>
         <li class="list-group-item" id="five-wind-7">wind</li>
         <li class="list-group-item" id="five-hum-7">humidity</li>
       </ul>
-      <div class="card-body">
-
-      </div>
+      
     </div>
-    <div class="card shadow p-3 mb-5 bg-white rounded" >
+    <div class="card shadow p-3 mb-5 bg-white rounded perday" >
+      <h5 class="card-title" id="15">Day 2</h5>
       <img class="card-img-top" src="./assets/images/02d@2x.png" alt="weather icon" id="five-icon-15" height="140px" width="90px">
-      <div class="card-body">
-        <h5 class="card-title" id="15">Day 2</h5>
-      </div>
-      <ul class="list-group list-group-flush">
+          <ul class="list-group list-group-flush">
         <li class="list-group-item" id = "five-temp-15">temp</li>
         <li class="list-group-item" id="five-wind-15">wind</li>
         <li class="list-group-item" id="five-hum-15">humidity</li>
       </ul>
-      <div class="card-body">
-
-      </div>
+  
     </div>
-    <div class="card shadow p-3 mb-5 bg-white rounded" >
+    <div class="card shadow p-3 mb-5 bg-white rounded perday" >
+      <h5 class="card-title" id="23">Day 3</h5>
       <img class="card-img-top" src="./assets/images/02d@2x.png" alt="weather icon" id="five-icon-23" height="140px" width="90px">
-      <div class="card-body">
-        <h5 class="card-title" id="23">Day 3</h5>
-      </div>
-      <ul class="list-group list-group-flush">
+          <ul class="list-group list-group-flush">
         <li class="list-group-item" id = "five-temp-23">temp</li>
         <li class="list-group-item" id="five-wind-23">wind</li>
         <li class="list-group-item" id="five-hum-23">humidity</li>
       </ul>
-      <div class="card-body">
-
-      </div>
-    </div>
-    <div class="card shadow p-3 mb-5 bg-white rounded" >
+        </div>
+    <div class="card shadow p-3 mb-5 bg-white rounded perday" >
+      <h5 class="card-title" id="31">Day 4</h5>
       <img class="card-img-top" src="./assets/images/02d@2x.png" alt="weather icon" id="five-icon-31" height="140px" width="90px">
-      <div class="card-body">
-        <h5 class="card-title" id="31">Day 4</h5>
-      </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item" id = "five-temp-31">temp</li>
         <li class="list-group-item" id="five-wind-31">wind</li>
         <li class="list-group-item" id="five-hum-31">humidity</li>
       </ul>
-      <div class="card-body">
-
-      </div>
     </div>
-    <div class="card shadow p-3 mb-5 bg-white rounded" >
+    <div class="card shadow p-3 mb-5 bg-white rounded perday" >
+      <h5 class="card-title" id="39">Day 5</h5>
       <img class="card-img-top" src="./assets/images/02d@2x.png" alt="weather icon" id="five-icon-39" height="140px" width="90px">
-      <div class="card-body">
-        <h5 class="card-title" id="39">Day 5</h5>
-      </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item" id = "five-temp-39">temp</li>
         <li class="list-group-item" id="five-wind-39">wind</li>
         <li class="list-group-item" id="five-hum-39">humidity</li>
       </ul>
-      <div class="card-body">
-
-      </div>
     </div>
-    </div>
-
-
-
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"
