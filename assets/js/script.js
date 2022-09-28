@@ -83,8 +83,9 @@ let formSubmitHandler = function (event){
     });
 }
 
-// save previous searches as buttons
+// save previous searches as buttons, but only if the item isn't already in there
 function saveCity(city){
+    if (cityList.indexOf(city)){
     cityList.push(city)
     console.log(cityList)
     localStorage.setItem("Saved-Cities", JSON.stringify(cityList))
@@ -92,7 +93,7 @@ function saveCity(city){
     cityBtn.innerText=city
     cityBtn.classList.add('btn', 'btn-success', 'btn,-blockn')
     let searchHistory = document.querySelector(".search-history")
-    searchHistory.appendChild(cityBtn)
+    searchHistory.appendChild(cityBtn)}
 }
 
 // give button clickability and function
