@@ -10,6 +10,7 @@ if (JSON.parse(localStorage.getItem("Saved-Cities")) !== null)
   for (i=0; i<cityList.length; i++){
   let cityBtn = document.createElement('button')
   cityBtn.innerText=cityList[i]
+  cityBtn.classList.add('btn', 'btn-success', 'btn,-blockn')
   let searchHistory = document.querySelector(".search-history")
   searchHistory.appendChild(cityBtn)
 }}
@@ -37,6 +38,7 @@ function getForecast(lat,lon, type){
    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=87b635d8d76e97c5eaab6ef42831deea`
    console.log(apiUrl)
    fetch(apiUrl)
+
     .then(function (response) {
       return response.json();
     })
@@ -57,12 +59,12 @@ let formSubmitHandler = function (event){
    let cityName = $('#city').val()
    console.log(cityName)
    let coordApi = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=87b635d8d76e97c5eaab6ef42831deea`
-
+  //  saveCity(cityName) 
    event.preventDefault();
    fetch(coordApi)
       .then(function (response) {
-        if (response.ok){saveCity()}
-
+        if (response.ok){
+          saveCity(cityName) }
       return response.json();
     })
     .then(function (data) {
@@ -81,8 +83,10 @@ let formSubmitHandler = function (event){
     });
 }
 
+// save previous searches as buttons
 function saveCity(city){
     cityList.push(city)
+    console.log(cityList)
     localStorage.setItem("Saved-Cities", JSON.stringify(cityList))
     let cityBtn = document.createElement('button')
     cityBtn.innerText=city
@@ -91,12 +95,5 @@ function saveCity(city){
     searchHistory.appendChild(cityBtn)
 }
 
-
-
-// create card with current weather (with dleayed show)
-// let currentWeatherEl = document.createElement('card')
-
-
-// save previous searches as buttons
 // give button clickability and function
 cityNameEl.addEventListener('submit', formSubmitHandler);
