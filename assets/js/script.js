@@ -16,12 +16,12 @@ if (JSON.parse(localStorage.getItem("Saved-Cities")) !== null)
   for (i=0; i<cityList.length; i++){
   let cityBtn = document.createElement('button')
   cityBtn.innerText=cityList[i].toUpperCase()
-  cityBtn.classList.add('btn', 'btn-success', 'btn,-blockn', 'm-3')
+  cityBtn.classList.add('btn', 'btn-success', 'btn,-blockn', 'm-1' )
   let searchHistory = document.querySelector(".search-history")
   searchHistory.appendChild(cityBtn)
 }}
 
-//  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=87b635d8d76e97c5eaab6ef42831deea`
+
 
 // getting the current weather through the api using the lat and lon
 function getWeather(lat,lon, type){
@@ -51,9 +51,9 @@ function getForecast(lat,lon, type){
     .then(function (data) {
       console.log(data);
       for (i=7;i<40; i+=8){
-        console.log(data.list[i])
+      
       document.getElementById(`five-icon-${i}`).src= `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`
-      // document.getElementById(`${i}`).innerText= date.getDate()++ + "/" +  month +"/"+ date.getFullYear()
+      document.getElementById(`${i}`).innerText= data.list[i].dt_txt
       document.getElementById(`five-temp-${i}`).innerText= "Temp: " +Math.floor(data.list[i].main.temp) +'°C'
       document.getElementById(`five-wind-${i}`).innerText= "Wind Speed: "+ data.list[i].wind.speed + 'm/s'
       document.getElementById(`five-hum-${i}`).innerText= "Humidity: " +data.list[i].main.humidity + "%"
@@ -66,6 +66,7 @@ let formSubmitHandler = function (event){
    console.log(cityName)
    let coordApi = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=87b635d8d76e97c5eaab6ef42831deea`
    event.preventDefault();
+   cityNameEl = ""
    fetch(coordApi)
       .then(function (response) {
 
@@ -75,7 +76,7 @@ let formSubmitHandler = function (event){
       console.log(data);
       // if (data.length === 0){
         if (!data[0]){
-          alert("location not found")
+          alert("Location not found, please enter valid city.")
         console.log("No results.")
         } else {
              saveCity(cityName) 
@@ -102,7 +103,7 @@ function saveCity(city){
     localStorage.setItem("Saved-Cities", JSON.stringify(cityList))
     let cityBtn = document.createElement('button')
     cityBtn.innerText=city.toUpperCase()
-    cityBtn.classList.add('btn', 'btn-success', 'btn,-blockn', 'm-3')
+    cityBtn.classList.add('btn', 'btn-success', 'btn,-blockn', 'm-1')
     let searchHistory = document.querySelector(".search-history")
     searchHistory.appendChild(cityBtn)}
 }

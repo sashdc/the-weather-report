@@ -13,7 +13,7 @@ header {
     font-family: Arial, Helvetica, sans-serif;
     border-bottom-right-radius: 90px;
     border-bottom-left-radius: 90px;
-    margin-bottom: 1%;
+    margin-bottom: .5%;
 }
 
 body {
@@ -37,12 +37,13 @@ body {
     margin-bottom: 50px;
 }
 .search-history{
- margin: 0 auto;
+ margin: 10px auto;
 }
 
 .five-day {
     display: flex;
     justify-content: space-around;
+    flex-wrap: nowrap;
     /* padding-top: 20px; */
     /* margin:0px 50px; */
     opacity: 70%;
@@ -50,9 +51,9 @@ body {
 }
 
 .current-weather {
-    /* margin: 30px; */
+    margin: 30px;
     opacity: 80%;
-    width: 50%;
+    width: 40%;
     height: 40%
     
 }
