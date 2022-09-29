@@ -84,10 +84,11 @@ li {
     .current-weather {
         width: 90%;
         margin: 0 auto;
+        margin-top: 40px;
     }
 
 .search-history{
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
     .five-day {
@@ -99,6 +100,10 @@ li {
 .perday{
     display: flex;
     flex-direction: row;
+}
+
+.perday img{
+    width: 30%;
 }
 
 }
