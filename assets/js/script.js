@@ -86,8 +86,11 @@ let formSubmitHandler = function (event){
       let lon = data[0].lon;
       console.log(lat)
       console.log(lon)
+      let countryCode = data[0].country.toLowerCase()
+      console.log(countryCode)
       getWeather(lat, lon);
       document.getElementById('chosencity').innerText=cityName.toUpperCase() +"," + data[0].country 
+      document.getElementById('flag').src = `https://raw.githubusercontent.com/hampusborgos/country-flags/main/png100px/${countryCode}.png`
       document.getElementById('currentdate').innerText = curDate
       getForecast(lat, lon);
       }

@@ -75,10 +75,13 @@ li {
     align-items: center;
 }
 
-.perday { 
-    /* height : 90% */
+#flag{
+    opacity: 40%;
+    position: relative;
+    left: 0;
+    top: 0;
+    
 }
-
 
 @media (max-width: 1000px) {
     .weather {
