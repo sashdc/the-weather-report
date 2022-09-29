@@ -10,7 +10,7 @@ var curDate = date.getDate() + "/" +  month +"/"+ date.getFullYear()
 
 console.log(JSON.parse(localStorage.getItem("Saved-Cities")))
 
-// loads previously saved cities as buttons if there are cities there
+// loads previously saved cities in local storage as buttons if there are cities there
 if (JSON.parse(localStorage.getItem("Saved-Cities")) !== null)
   {cityList =  JSON.parse(localStorage.getItem("Saved-Cities"))
   for (i=0; i<cityList.length; i++){
@@ -33,13 +33,14 @@ function getWeather(lat,lon, type){
     })
     .then(function (data) {
       console.log(data)
+      // populates the current weather element with data from response
       document.getElementById('icon').src= `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
       document.getElementById('cur-temp').innerText= "Temp: " +Math.floor(data.main.temp) +'°C'
       document.getElementById('cur-wind').innerText= "Wind Speed: "+ data.wind.speed + 'm/s'
       document.getElementById('cur-humidity').innerText= "Humidity: " +data.main.humidity + "%"
 })}
 
-// gets the  day forecast using lat lon and populates the elements
+// gets the  5 day forecast using lat lon and populates the elements
 function getForecast(lat,lon, type){
    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=87b635d8d76e97c5eaab6ef42831deea`
    console.log(apiUrl)
@@ -51,7 +52,7 @@ function getForecast(lat,lon, type){
     .then(function (data) {
       console.log(data);
       for (i=7;i<40; i+=8){
-      
+      // populates 5 day cards with necessary details from response
       document.getElementById(`five-icon-${i}`).src= `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`
       document.getElementById(`${i}`).innerText= data.list[i].dt_txt
       document.getElementById(`five-temp-${i}`).innerText= "Temp: " +Math.floor(data.list[i].main.temp) +'°C'
@@ -74,14 +75,14 @@ let formSubmitHandler = function (event){
     })
     .then(function (data) {
       console.log(data);
-      // if (data.length === 0){
+      // stops further functions adn sends an alert if the city is invalid
         if (!data[0]){
-          alert("Location not found, please enter valid city.")
+          alert("Location not found \n please enter valid city.")
         console.log("No results.")
         } else {
              saveCity(cityName) 
 
-        // return;
+        // takes the lat and lon from response to call the weather detals as well as the country name and cde to generate a flag
         let lat = data[0].lat;
       let lon = data[0].lon;
       console.log(lat)

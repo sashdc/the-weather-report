@@ -76,10 +76,10 @@ li {
 }
 
 #flag{
-    opacity: 40%;
-    position: relative;
+    opacity: 90%;
+    position: absolute;
     left: 0;
-    top: 0;
+    top:0
     
 }
 
