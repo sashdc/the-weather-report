@@ -54,7 +54,11 @@ function getForecast(lat,lon, type){
       for (i=7;i<40; i+=8){
       // populates 5 day cards with necessary details from response
       document.getElementById(`five-icon-${i}`).src= `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`
-      document.getElementById(`${i}`).innerText= data.list[i].dt_txt
+      let fiveDate = new Date(data.list[i].dt_txt)
+      console.log(fiveDate)
+      // get the date for the 5 day forecast
+      let fiveDay = fiveDate.toLocaleString('default', { weekday: 'short' });
+      document.getElementById(`${i}`).innerText= fiveDay + " " +  fiveDate.getDate() + "/" +  month +"/"+ fiveDate.getFullYear()
       document.getElementById(`five-temp-${i}`).innerText= "Temp: " +Math.floor(data.list[i].main.temp) +'°C'
       document.getElementById(`five-wind-${i}`).innerText= "Wind Speed: "+ data.list[i].wind.speed + 'm/s'
       document.getElementById(`five-hum-${i}`).innerText= "Humidity: " +data.list[i].main.humidity + "%"
